@@ -1,13 +1,10 @@
-with open("persian_words.txt","r",encoding="utf-8") as file:
+with open("Words.txt","r",encoding="utf-8") as file:
     words = file.read()
 
 words = list(set(list(words.replace("\u200c","").split())))
 words = [word.lower() for word in words]
 
 print("Welcome to Wordle-Cheat cheat. This is just for fun")
-
-print("Enter the word length:")
-length = int(input())
 
 print("What should it have ?")
 inc = list(set(list(input().lower().replace(" ",""))))
@@ -36,8 +33,9 @@ def word_check(word,places):
                 return False
     return True
 
-res = [word for word in words if (len(word)==length and includes(word,inc) and excludes(word,exc) and word_check(word,order))]
+res = [word for word in words if (len(word)==5 and includes(word,inc) and excludes(word,exc) and word_check(word,order))]
 
+print("These words can be the answer: \n")
 print(*[i+"\n" for i in res])
 
 
